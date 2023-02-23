@@ -1,11 +1,13 @@
 import Head from 'next/head'
-import Image from 'next/image'
-import { Inter } from '@next/font/google'
-import styles from '@/styles/Home.module.css'
+import Link from 'next/link'
 
-const inter = Inter({ subsets: ['latin'] })
+import { useSession } from 'next-auth/react'
 
-export default function Home() {
+import AuthButton from '@/components/AuthButton'
+
+const Home = () => {
+  const { data: session } = useSession()
+
   return (
     <>
       <Head>
@@ -14,110 +16,51 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className={styles.main}>
-        <div className={styles.description}>
-          <p>
-            Get started by editing&nbsp;
-            <code className={styles.code}>pages/index.js</code>
-          </p>
-          <div>
-            <a
-              href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              By{' '}
-              <Image
-                src="/vercel.svg"
-                alt="Vercel Logo"
-                className={styles.vercelLogo}
-                width={100}
-                height={24}
-                priority
-              />
-            </a>
+
+      <main className="grid mt-5 md:justify-center">
+        {session ? (
+          <div className="px-11 py-8 rounded-md md:border-2 flex flex-col gap-y-7 md:w-96 md:border-gray-100 md:shadow-lg md:shadow-gray-400/80">
+            <h1 className="text-blue-500 text-lg">
+              {session.login} / <strong>student_developer_pack</strong>
+            </h1>
+            <div>
+              <p className="text-neutral-700">Hello {session.login}!</p>
+              <p className="text-neutral-600 mt-2">
+                It looks like you are eligible to get the Github Student Pack.
+              </p>
+            </div>
+            <div>
+              <div className="text-center">
+                <Link
+                  type="button"
+                  className="rounded-md w-4/5 px-6 py-2.5 bg-[hsl(123,30%,50%)] text-white hover:bg-[hsl(123,35%,50%)]"
+                  href={session.link || ''}
+                >
+                  Activate
+                </Link>
+              </div>
+              <div className="mt-2 text-center">
+                <AuthButton />
+              </div>
+            </div>
           </div>
-        </div>
-
-        <div className={styles.center}>
-          <Image
-            className={styles.logo}
-            src="/next.svg"
-            alt="Next.js Logo"
-            width={180}
-            height={37}
-            priority
-          />
-          <div className={styles.thirteen}>
-            <Image
-              src="/thirteen.svg"
-              alt="13"
-              width={40}
-              height={31}
-              priority
-            />
+        ) : (
+          <div className="px-11 py-8 rounded-md md:border-2 flex flex-col gap-y-7 md:w-96 md:border-gray-100 md:shadow-lg">
+            <h1 className="text-blue-500 text-lg">
+              github / <strong>student_developer_pack</strong>
+            </h1>
+            <p className="text-neutral-600">
+              You firt need to login with your 42 account to check if you are eligible for the
+              Github student developer pack.
+            </p>
+            <div className="md:text-center">
+              <AuthButton />
+            </div>
           </div>
-        </div>
-
-        <div className={styles.grid}>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2 className={inter.className}>
-              Docs <span>-&gt;</span>
-            </h2>
-            <p className={inter.className}>
-              Find in-depth information about Next.js features and&nbsp;API.
-            </p>
-          </a>
-
-          <a
-            href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2 className={inter.className}>
-              Learn <span>-&gt;</span>
-            </h2>
-            <p className={inter.className}>
-              Learn about Next.js in an interactive course with&nbsp;quizzes!
-            </p>
-          </a>
-
-          <a
-            href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2 className={inter.className}>
-              Templates <span>-&gt;</span>
-            </h2>
-            <p className={inter.className}>
-              Discover and deploy boilerplate example Next.js&nbsp;projects.
-            </p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2 className={inter.className}>
-              Deploy <span>-&gt;</span>
-            </h2>
-            <p className={inter.className}>
-              Instantly deploy your Next.js site to a shareable URL
-              with&nbsp;Vercel.
-            </p>
-          </a>
-        </div>
+        )}
       </main>
     </>
   )
 }
+
+export default Home
