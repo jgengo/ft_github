@@ -7,16 +7,24 @@
   <sub>From <a href="https://hive.fi">Hive Helsinki</a></sub>
 </div>
 
----
+<br><br>
+
+# Introduction
 
 ![sign in page](./.github/docs/sign_in.png)
 ![once logged in](./.github/docs/logged_in.png)
 
 <br>
 
-`ft_github` is a small side-project I created to experiment with NextJS. We already have running [@HiveHelsinki](https://github.com/hivehelsinki) a Ruby on Rails version of this site but wanted to give a shot with NextJS to compare the projects size.
+`ft_github` is a small side-project that allows Github education managers (of the 42 network) to enable their students to generate activation links for accessing Github's student benefits.
 
-## Getting Started
+We already have a Ruby on Rails version of this site running at [@HiveHelsinki](https://github.com/hivehelsinki), but I wanted to experiment with NextJS and Tailwind to compare project sizes.
+
+Please note that if you are not a school maintainer recognized by Github, you may not have the necessary secrets to run the application. However, you can still use this project as an example to log in via 42 OAuth.
+
+<br>
+
+# Getting Started
 
 First, You will need to create an intra API app from [https://profile.intra.42.fr/oauth/applications/new](https://profile.intra.42.fr/oauth/applications/new)
 
@@ -37,7 +45,3 @@ pnpm dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-## Good to know
-
-If you are not a school maintainer recognized by Github, you might not have the secrets needed to run the application, but you can at least use this project as an example to log in via 42 OAuth.
