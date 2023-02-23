@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 import { useSession } from 'next-auth/react'
 
-import AuthButton from '@/components/AuthButton'
+import AuthButton from '../components/AuthButton'
 
 const Home = () => {
   const { data: session } = useSession()
