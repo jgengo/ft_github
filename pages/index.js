@@ -1,7 +1,8 @@
 import Head from 'next/head'
 import Link from 'next/link'
 
-import { useSession } from 'next-auth/react'
+// import { useSession } from 'next-auth/react'
+import { useSession, signIn, signOut } from 'next-auth/react'
 
 import AuthButton from '../components/AuthButton'
 
@@ -16,7 +17,6 @@ const Home = () => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
       <main className="grid mt-5 md:justify-center">
         {session ? (
           <div className="px-11 py-8 rounded-md md:border-2 flex flex-col gap-y-7 md:w-96 md:border-gray-100 md:shadow-lg md:shadow-gray-400/80">
@@ -40,7 +40,9 @@ const Home = () => {
                 </Link>
               </div>
               <div className="mt-2 text-center">
-                <AuthButton />
+                <AuthButton type="default" onClick={() => signOut()}>
+                  Sign out
+                </AuthButton>
               </div>
             </div>
           </div>
@@ -54,7 +56,9 @@ const Home = () => {
               Github student developer pack.
             </p>
             <div className="md:text-center">
-              <AuthButton />
+              <AuthButton type="colored" onClick={() => signIn()}>
+                Sign in with 42
+              </AuthButton>
             </div>
           </div>
         )}
