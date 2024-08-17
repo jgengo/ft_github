@@ -7,34 +7,46 @@
   <sub>From <a href="https://hive.fi">Hive Helsinki</a></sub>
 </div>
 
-<br><br>
+<h1 align="center">Proof-of-Concept</h1>
 
-# Introduction
-
-![sign in page](./.github/docs/sign_in.png)
-![once logged in](./.github/docs/logged_in.png)
+`ft_github` is a proof-of-concept project designed to offer an alternative to [Hive Helsinki](https://www.hive.fi)’s existing application. This tool allows Github education managers within the 42network to generate activation links for students to access Github's student benefits. With this solution, we reduced the container size from 1.3GB to just 136MB.
 
 <br>
 
-`ft_github` is a small side-project that allows Github education managers (of the 42 network) to enable their students to generate activation links for accessing Github's student benefits.
+![sign in page](./.github/docs/sign_in.png)
 
-We already have a Ruby on Rails version of this site running at [@HiveHelsinki](https://github.com/hivehelsinki), but I wanted to experiment with NextJS and Tailwind to compare project sizes.
+<br><br>
+
+![once logged in](./.github/docs/logged_in.png)
+
+<br>
 
 Please note that if you are not a school maintainer recognized by Github, you may not have the necessary secrets to run the application. However, you can still use this project as an example to log in via 42 OAuth.
 
 <br>
 
-# Getting Started
+## Features
 
-First, You will need to create an intra API app from [https://profile.intra.42.fr/oauth/applications/new](https://profile.intra.42.fr/oauth/applications/new)
+- OAuth integration with 42 intra for authentication.
+- Simple UI built with Next.js and Tailwind CSS.
+- Lightweight and optimized for performance.
 
-Then, create a .env file and fill the information inside.
+## Getting Started
+
+### Prerequisites
+
+- [Create an intra API app](https://profile.intra.42.fr/oauth/applications/new).
+- Clone the repository and create a `.env` file:
 
 ```bash
 cp .env.sample .env
 ```
 
-Then, run the development server:
+- Fill in the required environment variables in the .env file.
+
+### Running the project
+
+To start the development server:
 
 ```bash
 npm run dev
@@ -44,4 +56,12 @@ yarn dev
 pnpm dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Visit http://localhost:3000 in your browser to view the application.
+
+<br>
+
+## License
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## Contact
+For any inquiries, please contact me.
