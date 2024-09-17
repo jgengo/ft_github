@@ -1,13 +1,11 @@
-<h1 align="center"><code>ft_github</code></h1>
-
 <div align="center">
+  <h1 align="center">ft_github</h1>
   <sub>Created by <a href="https://github.com/jgengo">Jordane Gengo (Titus)</a></sub>
 </div>
-<div align="center">
-  <sub>From <a href="https://hive.fi">Hive Helsinki</a></sub>
-</div>
 
-<h1 align="center">Proof-of-Concept</h1>
+<h3 align="center">Proof-of-Concept</h3>
+
+<br/>
 
 `ft_github` is a proof-of-concept project designed to offer an alternative to [Hive Helsinki](https://www.hive.fi)’s existing application. This tool allows Github education managers within the 42network to generate activation links for students to access Github's student benefits. With this solution, we reduced the container size from 1.3GB to just 136MB.
 
